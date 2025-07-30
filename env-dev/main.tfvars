@@ -19,6 +19,15 @@ vpc = {
 }
 eks = {
   main = {
+    node_groups = {
+      n1 = {
+        size = 1
+        instance_types = ["t3.large"]
+        capacity_type =SPOT
+
+      }
+
+    }
 
   }
 }

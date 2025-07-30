@@ -21,4 +21,6 @@ module "eks" {
   project_name            = var.project_name
   component               = "eks"
   subnets_ids             = lookup(lookup(module.vpc,"main",null),"app_subnets_ids",null)
+  node_groups             = lookup(each.value,"node_groups",null)
+
 }
