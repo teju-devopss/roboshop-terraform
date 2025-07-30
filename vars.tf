@@ -6,6 +6,6 @@ variable "prometheus_cidrs" {}
 variable "vpc" {}
 variable "acm_arn" {}
 variable "zone_id" {}
-variable "rds" {}
+# variable "rds" {}
 variable "eks" {}
 
