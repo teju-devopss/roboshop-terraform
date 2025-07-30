@@ -17,6 +17,6 @@ module "eks" {
   for_each                = var.eks
   env                     =  var.env
   project_name            = var.project_name
-  component               = eks
-  subnets_ids             = lookup(lookup(module.vpc,"main",null),app_subnets_cidr,null)
+  component               = "eks"
+  subnets_ids             = lookup(lookup(module.vpc,"main",null),"app_subnets_cidr",null)
 }
