@@ -7,4 +7,5 @@ variable "vpc" {}
 variable "acm_arn" {}
 variable "zone_id" {}
 variable "rds" {}
+variable "eks" {}
 
