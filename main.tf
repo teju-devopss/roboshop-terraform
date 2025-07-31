@@ -67,7 +67,7 @@ module "elasticache" {
 }
 
 module "rabbitmq" {
- source = "git::https://teju-devopss/tf-module-rabbitmq.git"
+ source = "git::https://github.com/teju-devopss/tf-module-rabbitmq.git"
 
  for_each      = var.rabbitmq
  instance_type = each.value["instance_type"]
