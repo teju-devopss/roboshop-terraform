@@ -1,5 +1,5 @@
 env              = "dev"
-project_name     = "expense"
+project_name     = "roboshop"
 kms_key_id       = "arn:aws:kms:us-east-1:522814736516:key/94568fc4-e087-46db-8d88-a6e69ed61d8e"
 bastion_cidrs     = ["172.31.84.34/32"]  #workstation IP
 prometheus_cidrs  = ["172.31.35.165/32"]
