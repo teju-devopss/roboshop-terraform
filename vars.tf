@@ -9,5 +9,5 @@ variable "zone_id" {}
 variable "eks" {}
 variable "docdb" {}
 variable "elasticache" {}
-# variable "rabbitmq" {}
+variable "rabbitmq" {}
 variable "rds" {}

@@ -46,44 +46,44 @@ module "docdb" {
 }
 
 module "elasticache" {
- source = "git::https://github.com/teju-devopss/tf-module-elasticache.git"
+  source = "git::https://github.com/teju-devopss/tf-module-elasticache.git"
 
- for_each               = var.elasticache
- num_cache_nodes        = each.value["num_cache_nodes"]
- engine                 = each.value["engine"]
- engine_version         = each.value["engine_version"]
- node_type              = each.value["node_type"]
- parameter_group_family = each.value["parameter_group_family"]
+  for_each               = var.elasticache
+  num_cache_nodes        = each.value["num_cache_nodes"]
+  engine                 = each.value["engine"]
+  engine_version         = each.value["engine_version"]
+  node_type              = each.value["node_type"]
+  parameter_group_family = each.value["parameter_group_family"]
 
- env  = var.env
- tags = {}
- kms  = var.kms_key_id
- project_name = var.project_name
+  env  = var.env
+  tags = {}
+  kms  = var.kms_key_id
+  project_name = var.project_name
 
- subnets  = lookup(lookup(module.vpc, "main", null), "db_subnets_ids", null)
- vpc_id   = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
- sg_cidrs = lookup(lookup(var.vpc, "main", null), "app_subnets_cidr", null)
+  subnets  = lookup(lookup(module.vpc, "main", null), "db_subnets_ids", null)
+  vpc_id   = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  sg_cidrs = lookup(lookup(var.vpc, "main", null), "app_subnets_cidr", null)
 
 }
 
-# module "rabbitmq" {
-#  source = "git::https://github.com/teju-devopss/tf-module-rabbitmq.git"
-#
-#  for_each      = var.rabbitmq
-#  instance_type = each.value["instance_type"]
-#
-#  env             = var.env
-#  tags            = {}
-#  kms             = var.kms_key_id
-#  bastion_cidrs   = var.bastion_cidrs
-#  route53_zone_id = var.zone_id
-#  project_name = var.project_name
-#
-#  subnets  = lookup(lookup(module.vpc, "main", null), "db_subnets_ids", null)
-#  vpc_id   = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#  sg_cidrs = lookup(lookup(var.vpc, "main", null), "app_subnets_cidr", null)
-#
-# }
+module "rabbitmq" {
+  source = "git::https://github.com/teju-devopss/tf-module-rabbitmq.git"
+
+  for_each      = var.rabbitmq
+  instance_type = each.value["instance_type"]
+
+  env             = var.env
+  tags            = {}
+  kms             = var.kms_key_id
+  bastion_cidrs   = var.bastion_cidrs
+  route53_zone_id = var.zone_id
+  project_name = var.project_name
+
+  subnets  = lookup(lookup(module.vpc, "main", null), "db_subnets_ids", null)
+  vpc_id   = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  sg_cidrs = lookup(lookup(var.vpc, "main", null), "app_subnets_cidr", null)
+
+}
 
 module "rds" {
  source = "git::https://github.com/teju-devopss/tf-module-rds.git"
