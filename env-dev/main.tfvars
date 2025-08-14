@@ -58,10 +58,11 @@ rabbitmq = {
 
 rds = {
   main = {
-    allocated_storage      = 20
-    engine                 = "mysql"
-    engine_version         = "5.7.44"
-    instance_class         = "db.m5.large"
-    parameter_group_family = "mysql5.7"
+    allocated_storage   = 20
+    engine_version      = "5.7.44"
+    family              = "mysql5.7"
+    instance_class      = "db.t3.micro"
+    skip_final_snapshot = true
+    storage_type        = "gp3"
   }
 }
